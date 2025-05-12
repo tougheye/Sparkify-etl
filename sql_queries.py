@@ -10,7 +10,7 @@ LOG_JSONPATH = config.get("S3", "LOG_JSONPATH")
 SONG_DATA = config.get("S3", "SONG_DATA")
 
 # DROP TABLES
-
+# saving config links in their own variables
 staging_events_table_drop = "DROP TABLE IF EXISTS staging_events;"
 staging_songs_table_drop = "DROP TABLE IF EXISTS staging_songs;"
 songplay_table_drop = "DROP TABLE IF EXISTS songplays;"
@@ -19,8 +19,8 @@ song_table_drop = "DROP TABLE IF EXISTS songs;"
 artist_table_drop = "DROP TABLE IF EXISTS artists;"
 time_table_drop = "DROP TABLE IF EXISTS time;"
 
-# CREATE TABLES
-
+# CREATE Schema for the ttaging tables to save data from S3 buckets to later shift to the STAR schema files
+# These tables will be created from created_tables.py file
 staging_events_table_create= ("""
 CREATE TABLE staging_events (
         artist            TEXT,                 
@@ -57,6 +57,8 @@ CREATE TABLE staging_songs (
         year               INT );
 """)
 
+# Create the STAR Schema to insert data later
+# First create the fact talbe songplay
 songplay_table_create = ("""
 CREATE TABLE songplays (
     songplay_id   INT IDENTITY(0,1) PRIMARY KEY, 
@@ -70,6 +72,7 @@ CREATE TABLE songplays (
     user_agent    VARCHAR);
 """)
 
+# Then create the dimension tables - users, songs, artists, time
 user_table_create = ("""
 CREATE TABLE users (
     user_id      INT PRIMARY KEY NOT NULL, 
@@ -109,7 +112,9 @@ CREATE TABLE time (
 """)
 
 # STAGING TABLES
-# The follwoing tables are created to stage the tables from S3 files. The log data uses JSON formatting. Naturally, it uses IAM roles and S3 links. These staging tables will be run from etl.py file.
+# The follwoing tables are created to stage the tables from S3 files. 
+#The log data uses JSON formatting. Naturally, it uses IAM roles and S3 links. 
+#These staging tables will be run from etl.py file.
 
 staging_events_copy = ("""
 COPY staging_events
@@ -134,6 +139,8 @@ REGION 'us-west-2';;
 
 
 # FINAL TABLES
+# After the schemas are created and the data is parked in the staging tables, 
+# following queries will insert/load the data from the staging tables to the fact and dimension tables
 songplay_table_insert = ("""
 INSERT INTO songplays
 (
@@ -278,7 +285,8 @@ FROM (
 );                 
 """)
 
-# QUERY LISTS
+# QUERY LISTS - the create_table_queries and drop_table_queries lists will be run from create_tables.py
+# copy_table_queries and insert_table_queries will be run from etl.py
 
 create_table_queries = [staging_events_table_create, staging_songs_table_create, songplay_table_create, user_table_create, song_table_create, artist_table_create, time_table_create]
 drop_table_queries = [staging_events_table_drop, staging_songs_table_drop, songplay_table_drop, user_table_drop, song_table_drop, artist_table_drop, time_table_drop]
