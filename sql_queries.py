@@ -1,7 +1,7 @@
 import configparser
 
 
-# CONFIG
+# CONFIG - saving config links from dwh.cfg file in their own variables
 config = configparser.ConfigParser()
 config.read('dwh.cfg')
 LOG_DATA = config.get("S3", "LOG_DATA")
@@ -10,7 +10,7 @@ LOG_JSONPATH = config.get("S3", "LOG_JSONPATH")
 SONG_DATA = config.get("S3", "SONG_DATA")
 
 # DROP TABLES
-# saving config links in their own variables
+
 staging_events_table_drop = "DROP TABLE IF EXISTS staging_events;"
 staging_songs_table_drop = "DROP TABLE IF EXISTS staging_songs;"
 songplay_table_drop = "DROP TABLE IF EXISTS songplays;"
@@ -73,6 +73,7 @@ CREATE TABLE songplays (
 """)
 
 # Then create the dimension tables - users, songs, artists, time
+# all name and location variables were categorized as TEXT since a few rows had longer names
 user_table_create = ("""
 CREATE TABLE users (
     user_id      INT PRIMARY KEY NOT NULL, 
@@ -141,6 +142,7 @@ REGION 'us-west-2';;
 # FINAL TABLES
 # After the schemas are created and the data is parked in the staging tables, 
 # following queries will insert/load the data from the staging tables to the fact and dimension tables
+# the tables were joined based on the sta
 songplay_table_insert = ("""
 INSERT INTO songplays
 (
@@ -258,7 +260,8 @@ CREATE TABLE staging_songs (
         title              VARCHAR,
         year               INT );
 """
-
+# time table is created based on the ts column in the staging_events table
+# other variables were extracted from ts values
 time_table_insert = ("""
 INSERT INTO time
 (
