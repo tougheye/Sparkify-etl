@@ -57,14 +57,21 @@ I then ran the insert queries to laod the Fact and dimension tables. Below are s
 
 <img width="717" alt="image" src="https://github.com/user-attachments/assets/a5e65abd-11c9-4596-ac0c-1ba73b936638" />
 <img width="717" alt="image" src="https://github.com/user-attachments/assets/b317b466-a35e-4dc5-9744-4168566c1054" />
-<img width="1358" alt="image" src="https://github.com/user-attachments/assets/599144fa-d4b7-4f2b-b823-a3a95572901a" />
-<img width="1358" alt="image" src="https://github.com/user-attachments/assets/2f613c11-cff9-4b26-bfbc-6ced49de3fbd" />
-<img width="1358" alt="image" src="https://github.com/user-attachments/assets/61a9823f-4c57-4509-94cc-d0cf145ea643" />
-<img width="1358" alt="image" src="https://github.com/user-attachments/assets/8a487f48-ffee-403d-b234-4ca0dcf3cbf2" />
-<img width="1358" alt="image" src="https://github.com/user-attachments/assets/ef2d4c31-fb7f-432f-8e05-4cfd3ebfe9ac" />
-<img width="1358" alt="image" src="https://github.com/user-attachments/assets/995945a6-8301-47f8-bf06-66a81e566311" />
-<img width="1358" alt="image" src="https://github.com/user-attachments/assets/c0268922-91c4-4902-8339-359c4552d998" />
-<img width="1358" alt="image" src="https://github.com/user-attachments/assets/a3263f71-c050-4ee6-a12e-1a887acc1e1b" />
+<img width="673" alt="image" src="https://github.com/user-attachments/assets/47c66673-4459-4d71-9304-6ca50be43490" />
+<img width="761" alt="image" src="https://github.com/user-attachments/assets/964089ec-5e42-473a-bb07-953bce218743" />
+<img width="761" alt="image" src="https://github.com/user-attachments/assets/f2890fdc-bdc0-4dd5-abbc-af7c53d38d0b" />
+<img width="761" alt="image" src="https://github.com/user-attachments/assets/f7bd2ca7-7733-40e5-90f5-23a6777a3001" />
+<img width="761" alt="image" src="https://github.com/user-attachments/assets/b9b17fb3-bdbd-49d7-9ee0-230d4035a691" />
+
+
+
+
+
+
+
+
+
+
 
 
 
