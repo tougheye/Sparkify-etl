@@ -1,2 +1,2 @@
 # Sparkify-etl
-This project is part of the Udacity Data Engineering Nanodegree program
+ETL pipeline for song play analysis with Redshift and S3
